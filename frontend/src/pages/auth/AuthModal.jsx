@@ -1,14 +1,18 @@
-// src/components/Auth/AuthModal.jsx
-import React, { useState } from "react";
+
+import React, { useContext, useState } from "react";
+import {ModalContext} from '../../context/modalContext/ModalContext'
 import Login from "./Login";
 import Signup from "./Signup";
 
-const AuthModal = ({ isOpen, onClose }) => {
+const AuthModal = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const {isAuthModalOpen, setAuthModalOpen} = useContext(ModalContext);
+
+ if (!isAuthModalOpen) return null;
 
   const toggleForm = () => setIsLogin(!isLogin);
-
-  if (!isOpen) return null;
+  const close = () => setAuthModalOpen(false);
+ 
 
   return (
     <div className="fixed inset-0  bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
@@ -16,7 +20,7 @@ const AuthModal = ({ isOpen, onClose }) => {
         
       
         <button
-          onClick={onClose}
+          onClick={close}
           className="absolute top-3 right-3 text-white  font-bold text-2xl cursor-pointer"
         >
           ×
@@ -42,7 +46,7 @@ const AuthModal = ({ isOpen, onClose }) => {
         </div>
 
         {/* Render Form */}
-        {isLogin ? <Login toggle={toggleForm} onClose={onClose} /> : <Signup  toggle={toggleForm} onClose={onClose} />}
+        {isLogin ? <Login toggle={toggleForm} /> : <Signup  toggle={toggleForm} />}
       </div>
     </div>
   );

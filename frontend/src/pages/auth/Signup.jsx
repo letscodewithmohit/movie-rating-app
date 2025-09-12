@@ -1,13 +1,13 @@
-// src/components/Auth/Signup.jsx
 import React, { useState, useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
-
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { ModalContext } from "../../context/modalContext/ModalContext.jsx";
 import API from '../../api/api.js';
 
 const Signup = ({ toggle }) => {
  const [formData, setFormData] = useState({name : "", email : "", password : ""})
 const [error , setError] = useState();
 const {login} = useContext(AuthContext);
+
 
   const handleChange = (e) =>{
    const {name , value} = e.target;
@@ -23,15 +23,13 @@ const {login} = useContext(AuthContext);
       password: formData.password
     });
 
-    // Save token
-    // localStorage.setItem("token", res.data.token);
-    // console.log(res.data.msg);
+  
     login(res.data.token); 
     alert("Registration Successful frontend 🎉");
     toggle();
     setFormData({name : "", email : "", password : ""});
 
-    console.log("User:", res.data.user);
+   
   } catch (err) {
     setError(err.response?.data?.msg || "Something went wrong");
   }

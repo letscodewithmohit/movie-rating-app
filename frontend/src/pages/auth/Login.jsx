@@ -1,14 +1,19 @@
-// src/components/Auth/Login.jsx
+
 import React, { useState,useContext } from "react";
 import {useNavigate} from "react-router-dom";
 import API from '../../api/api.js';
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../../context/authContext/AuthContext";
+import { ModalContext } from "../../context/modalContext/ModalContext.jsx";
 
-const Login = ({ toggle,onClose }) => {
+
+
+const Login = ({ toggle }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  
   const {login} = useContext(AuthContext);
+  const { setAuthModalOpen } = useContext(ModalContext);
 
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -21,8 +26,10 @@ const Login = ({ toggle,onClose }) => {
       login(res.data.token)
       alert("Login Successful 🚀");
       console.log("User:", res.data.user);
-      navigate('/');
-      onClose(false);
+     
+      setAuthModalOpen(false);
+      navigate('/profile')
+      
       setEmail("");
       setPassword("");
       setError("")

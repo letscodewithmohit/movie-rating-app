@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import MainLayout from "../layouts/MainLayout"; 
 import Movies from '../pages/movies/Movies'
 import Blogs from '../pages/blog/Blogs'
@@ -10,13 +10,10 @@ import PrivateRoutes from './PrivateRoutes';
 
 const AppRoutes = () => {
   return (
-<BrowserRouter>
   <Routes>
     <Route path="/" element={<MainLayout />}>
     {/* nested routes */}
           <Route index element={<Home />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/blogs" element={<Blogs />} />  
           <Route path="*" element={<PageNotFound />} />  
                 
          {/* Protected Route */}
@@ -31,7 +28,7 @@ const AppRoutes = () => {
 
     </Route>
   </Routes>
-</BrowserRouter>
+
   );
 };
 
