@@ -12,7 +12,7 @@ const HeroSlider = ({ movies }) => {
   }, [movies.length]);
 
   return (
-    <div className="relative w-[50%] h-[400px] md:h-[500px] overflow-hidden rounded-sm">
+    <div className="relative w-[100%] h-[400px] md:h-[495px] overflow-hidden rounded-sm">
       {movies.map((movie, index) => (
         <div
           key={movie.id}
