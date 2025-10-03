@@ -2,9 +2,6 @@ import  { useContext, useEffect } from 'react'
 import {AuthContext} from '../context/authContext/AuthContext'
 import {ModalContext} from '../context/modalContext/ModalContext'
 
-
-
-
 const PrivateRoutes = ({children}) => {
 
     const {isAuthenticated} = useContext(AuthContext);
