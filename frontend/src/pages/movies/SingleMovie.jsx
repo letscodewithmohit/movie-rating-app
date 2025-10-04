@@ -16,7 +16,7 @@ const SingleMovie = () => {
   ];
 
   const soundtracks = [
-    { id: 1, title: "Main Theme", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+    { id: 1, title: "Main Theme checkkkking..../", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
     { id: 2, title: "Battle Theme", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
     { id: 3, title: "Love Theme", link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
   ];
